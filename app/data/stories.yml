@@ -1,0 +1,69 @@
+version: "2.0"
+
+stories:
+
+- story: happy path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+
+- story: sad path 1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy
+
+- story: sad path 2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_goodbye
+
+ 
+ 
+    
+  
+  
+ 
+
+
+
+
+
+
+
+  
+
+- story: interactive_story_1
+  steps:
+  - intent: my_location
+  - action: loc_form
+  - active_loop: loc_form
+  - slot_was_set:
+    - requested_slot: loc
+  - slot_was_set:
+    - loc: State
+  - slot_was_set:
+    - requested_slot: pincode
+  - slot_was_set:
+    - pincode: '685590'
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_validate
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  
